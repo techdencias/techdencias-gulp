@@ -8,7 +8,7 @@ var wiredep = require('wiredep').stream;
 
 //tarea por defecto necesaria 
 //esta luego a su vez llama a la tarea dist, cambios y server 
-gulp.task('default',['inyect','dist','cambios','server'],function(){
+gulp.task('default',['dist','cambios','server'],function(){
 	
 });
 
@@ -26,7 +26,6 @@ gulp.task('jsugly',function(){
 	});
 
 //esta mueve los html a el folder dist/
-
 gulp.task('dist',function(){
 		gulp.src('*.html')
 			.pipe(gulp.dest('dist/'));
@@ -61,7 +60,8 @@ gulp.task('css',function(){
 //https://github.com/twbs/bootstrap/issues/16663
 //wiredep leera las dependecias instaladas en bower y la inyecta
 gulp.task('inyect',function(){
-	gulp.src('index.html')
+	console.log("inyectando dependecias")
+	gulp.src('./dist/index.html')
     .pipe(wiredep())
     .pipe(gulp.dest('./dist/'));
 	});
@@ -73,6 +73,8 @@ gulp.task('cambios',function(){
 	gulp.watch('styls/**/*.styl',['css']);	
 	gulp.watch('*.html',['dist']);
 	gulp.watch('js/*.js',['jsugly']);
+	//cuando se haya movido el index html a dist inyectaremos la dependecias
+	gulp.watch('dist/index.html',['inyect'])
 	//cuando se realize un cambio en los ficheros de dist recargaremos el browser.
 	gulp.watch("dist/*.html").on('change', browsersync.reload);
 	gulp.watch("dist/**/*.css").on('change', browsersync.reload);
