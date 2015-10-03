@@ -10,12 +10,16 @@ https://nodejs.org/en/
 Instalar Gulp
 <code>
 npm install -g gulp
+</code>
+Instalar bower
+<code>
 npm install -g bower
 </code>
 
 Para tener los pluggins y dependecias usados en el demo 
 <code>
 bower install
+
 npm install
 </code>
 
