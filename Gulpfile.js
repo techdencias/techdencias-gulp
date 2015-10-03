@@ -1,11 +1,14 @@
+//plugins que estamos usando
+//esta referenciados en el package.json
 var gulp = require('gulp');
 var browsersync = require('browser-sync').create();
 var stylus = require('gulp-stylus');
 var ugly = require('gulp-uglify');
+var wiredep = require('wiredep').stream;
 
 //tarea por defecto necesaria 
-//esta luego a su vez llama a la tarea dist, cambios y server
-gulp.task('default',['dist','cambios','server'],function(){
+//esta luego a su vez llama a la tarea dist, cambios y server 
+gulp.task('default',['inyect','dist','cambios','server'],function(){
 	
 });
 
@@ -51,6 +54,17 @@ gulp.task('css',function(){
 		.pipe(gulp.dest('dist/css/'));
 		console.log("compilados los estilos");
 });
+
+//con wiredep inyectaremos nuestras depedencias definidas en bower
+//nota: como actualmente hay un bug con la version 3.3.5 de bootstrap
+//he especificado en el bower.json que utilizare una version inferior
+//https://github.com/twbs/bootstrap/issues/16663
+//wiredep leera las dependecias instaladas en bower y la inyecta
+gulp.task('inyect',function(){
+	gulp.src('index.html')
+    .pipe(wiredep())
+    .pipe(gulp.dest('./dist/'));
+	});
 
 //tarea de watch aqui monitoriamos los cambios que se realizen en las carpetas.
 //y mandamos a llamar la tarea asociada a ella 

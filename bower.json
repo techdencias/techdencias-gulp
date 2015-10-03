@@ -1,0 +1,27 @@
+{
+  "name": "techdencias-gulp",
+  "version": "0.0.1",
+  "homepage": "https://github.com/danywalls/techdencias-gulp",
+  "authors": [
+    "Dany Paredes <danywalls4@gmail.com>"
+  ],
+  "description": "implementacion de bower y wiredep para manejo de dependecias",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "bower",
+    "wiredep",
+    "gulp"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.2"
+  }
+}
