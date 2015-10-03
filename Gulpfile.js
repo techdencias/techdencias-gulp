@@ -52,7 +52,7 @@ gulp.task('css',function(){
 		console.log("compilados los estilos");
 });
 
-//tarea de wwatch aqui monitoriamos los cambios que se realizen en las carpetas.
+//tarea de watch aqui monitoriamos los cambios que se realizen en las carpetas.
 //y mandamos a llamar la tarea asociada a ella 
 // a su vez tambien recargamos el browser a partir de los cambios que sucedan.
 gulp.task('cambios',function(){
