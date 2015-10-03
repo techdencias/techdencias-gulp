@@ -3,10 +3,16 @@ var browsersync = require('browser-sync').create();
 var stylus = require('gulp-stylus');
 var ugly = require('gulp-uglify');
 
+//tarea por defecto necesaria 
+//esta luego a su vez llama a la tarea dist, cambios y server
 gulp.task('default',['dist','cambios','server'],function(){
 	
 });
 
+//tarea que se dedica exclusivamente a minificar los js que esta en la ruta
+//definia en gulp.src y luego se le envia desde el pipe a ugly que es una representacion
+// re gulp-uglify para su minificacion, con gulp.dest le especificamos donde
+//publicar los ficheros.
 
 gulp.task('jsugly',function(){
 		console.log("minificacion de js");
@@ -16,6 +22,7 @@ gulp.task('jsugly',function(){
 			console.log("finalizado la minifcacion de js");
 	});
 
+//esta mueve los html a el folder dist/
 
 gulp.task('dist',function(){
 		gulp.src('*.html')
@@ -24,6 +31,9 @@ gulp.task('dist',function(){
 
 	})
 
+//utilizamos el pluggin  browser-sync 
+//http://www.browsersync.io/docs/gulp/
+//le especificamos que el folder donde iniciara el webserver sera ./dist/
 gulp.task('server',function(){
 	browsersync.init({
 		server:{		
@@ -32,6 +42,9 @@ gulp.task('server',function(){
 	})
 })
 
+//css se se encarga de tomar los archivos de stylus y convertirlos a css
+//https://learnboost.github.io/stylus/ para mas informacion sobre stylus
+//https://www.npmjs.com/package/gulp-stylus 
 gulp.task('css',function(){
 	gulp.src('styls/*.styl')
 		.pipe(stylus())
@@ -39,6 +52,9 @@ gulp.task('css',function(){
 		console.log("compilados los estilos");
 });
 
+//tarea de wwatch aqui monitoriamos los cambios que se realizen en las carpetas.
+//y mandamos a llamar la tarea asociada a ella 
+// a su vez tambien recargamos el browser a partir de los cambios que sucedan.
 gulp.task('cambios',function(){
 	gulp.watch('styls/**/*.styl',['css']);	
 	gulp.watch('*.html',['dist']);
