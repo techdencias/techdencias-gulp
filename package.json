@@ -1,0 +1,30 @@
+{
+  "name": "techdencias-gulp",
+  "version": "1.0.0",
+  "description": "demo de gulp ",
+  "main": "index.html",
+  "dependencies": {
+    "browser-sync": "^2.9.8",
+    "gulp": "^3.9.0",
+    "gulp-minify": "^0.0.5",
+    "gulp-stylus": "^2.0.7",
+    "gulp-uglify": "^1.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danywalls/techdencias-gulp.git"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "dany paredes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danywalls/techdencias-gulp/issues"
+  },
+  "homepage": "https://github.com/danywalls/techdencias-gulp#readme"
+}
