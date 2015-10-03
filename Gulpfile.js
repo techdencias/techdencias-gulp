@@ -59,6 +59,7 @@ gulp.task('cambios',function(){
 	gulp.watch('styls/**/*.styl',['css']);	
 	gulp.watch('*.html',['dist']);
 	gulp.watch('js/*.js',['jsugly']);
+	//cuando se realize un cambio en los ficheros de dist recargaremos el browser.
 	gulp.watch("dist/*.html").on('change', browsersync.reload);
 	gulp.watch("dist/**/*.css").on('change', browsersync.reload);
 	gulp.watch("dist/js/*.js").on('change',browsersync.reload)
